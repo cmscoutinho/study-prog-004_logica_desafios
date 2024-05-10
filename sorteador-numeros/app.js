@@ -7,21 +7,28 @@ function sortear() {
   let numero;
 
   if (isValid(quantidade, de, ate)) {
-    console.log(`Irei sortear ${quantidade} números.`);
-    for (let i = 0; i < quantidade; i++) {
-      numero = obterNumeroAleatorio(de, ate);
-
-      while (sorteados.includes(numero)) {
+    let intervalo = ate - de + 1;
+    if (quantidade > intervalo) {
+      alert(
+        "É preciso que o intervalo seja maior ou igual à quantidade de números!"
+      );
+    } else {
+      console.log(`Irei sortear ${quantidade} números.`);
+      for (let i = 0; i < quantidade; i++) {
         numero = obterNumeroAleatorio(de, ate);
-      }
 
-      sorteados.push(numero);
+        while (sorteados.includes(numero)) {
+          numero = obterNumeroAleatorio(de, ate);
+        }
+
+        sorteados.push(numero);
+      }
+      let resultado = document.getElementById("resultado");
+      resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${sorteados}</label>`;
+      alternarStatusBotaoReiniciar();
     }
-    let resultado = document.getElementById("resultado");
-    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${sorteados}</label>`;
-    alternarStatusBotaoReiniciar();
   } else {
-    console.log("Valor inválido!");
+    console.log("Campo vazio!");
   }
 }
 
