@@ -7,6 +7,11 @@ function sortear() {
   let numero;
 
   if (isValid(quantidade, de, ate)) {
+    if (de > ate) {
+      alert("Número inicial não pode ser maior que número final!");
+      return;
+    }
+
     let intervalo = ate - de + 1;
     if (quantidade > intervalo) {
       alert(
