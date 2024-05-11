@@ -1,7 +1,9 @@
 function alterarStatus(item) {
   let li = document.getElementById(`game-${item}`);
-  let div = li.children.item(0);
-  let a = li.children.item(2);
+  //   let div = li.children.item(0);
+  let div = li.querySelector(".dashboard__item__img");
+  //   let a = li.children.item(2);
+  let a = li.querySelector(".dashboard__item__button");
 
   if (div.classList.contains("dashboard__item__img--rented")) {
     div.classList.remove("dashboard__item__img--rented");
