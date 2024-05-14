@@ -25,7 +25,7 @@ function randperm(min, max) {
   let numero;
   let qty = max - min;
 
-  while (arr.length < qty) {
+  while (arr.length <= qty) {
     do {
       numero = parseInt(Math.random() * (max - min + 1) + min);
     } while (arr.includes(numero));
