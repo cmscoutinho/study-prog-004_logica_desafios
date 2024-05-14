@@ -1,23 +1,24 @@
 let amigos = [];
 
 function adicionar() {
-  let nome = document.getElementById('nome-amigo').value;
-  amigos.push(nome);
-
-  document.getElementById('lista-amigos').textContent = amigos;
-  nome.value = '';
+  let nome = document.getElementById('nome-amigo');
+  if (nome.value != '') {
+    amigos.push(nome.value);
+    document.getElementById('lista-amigos').textContent = amigos;
+    nome.value = '';
+  } else {
+    alert('Digite um nome válido!');
+  }
 }
 
 function sortear() {
   if (amigos.length % 2 == 0) {
-    let ordem = randperm(0, amigos.length - 1);
+    amigos = embaralhar(amigos);
     let resultado = document.getElementById('lista-sorteio');
     resultado.textContent = '';
 
     for (let i = 0; i < amigos.length; i += 2) {
-      resultado.textContent += `${amigos[ordem[i]]} -> ${
-        amigos[ordem[i + 1]]
-      }\n\n`;
+      resultado.textContent += `${amigos[i]} -> ${amigos[i + 1]}\n\n`;
     }
   } else {
     alert('É preciso um número par de amigos!');
@@ -31,17 +32,19 @@ function reiniciar() {
   document.getElementById('lista-sorteio').textContent = '';
 }
 
-function randperm(min, max) {
+function embaralhar(amigos) {
   let arr = [];
+  let amigosRes = [];
   let numero;
-  let qty = max - min;
+  let qty = amigos.length;
 
-  while (arr.length <= qty) {
+  while (arr.length < qty) {
     do {
-      numero = parseInt(Math.random() * (max - min + 1) + min);
+      numero = parseInt(Math.random() * qty);
     } while (arr.includes(numero));
 
     arr.push(numero);
+    amigosRes[arr.length - 1] = amigos[arr[arr.length - 1]];
   }
-  return arr;
+  return amigosRes;
 }
