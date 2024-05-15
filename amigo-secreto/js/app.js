@@ -31,7 +31,7 @@ function excluirAmigo(idx) {
 }
 
 function sortear() {
-  if (amigos.length % 2 == 0 && amigos.length >= 4) {
+  if (amigos.length >= 4) {
     amigos = embaralhar(amigos);
     let resultado = document.getElementById('lista-sorteio');
     resultado.textContent = '';
