@@ -2,8 +2,10 @@ let amigos = [];
 
 function adicionar() {
   let nome = document.getElementById('nome-amigo');
-  if (nome.value != '' && !amigos.includes(nome.value)) {
-    amigos.push(nome.value);
+  let nomeStr =
+    nome.value.charAt(0).toUpperCase() + nome.value.toLowerCase().slice(1);
+  if (nome.value != '' && !amigos.includes(nomeStr)) {
+    amigos.push(nomeStr);
     atualizaLista();
     nome.value = '';
   } else {
