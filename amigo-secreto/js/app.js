@@ -42,7 +42,7 @@ function sortear() {
       } <br>`;
     }
   } else {
-    alert('É preciso um número par de amigos e maior ou igual a 4!');
+    alert('É preciso um número de amigos maior ou igual a 4!');
   }
 }
 
