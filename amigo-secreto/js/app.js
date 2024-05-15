@@ -2,17 +2,17 @@ let amigos = [];
 
 function adicionar() {
   let nome = document.getElementById('nome-amigo');
-  if (nome.value != '') {
+  if (nome.value != '' && !amigos.includes(nome.value)) {
     amigos.push(nome.value);
     document.getElementById('lista-amigos').textContent = amigos;
     nome.value = '';
   } else {
-    alert('Digite um nome válido!');
+    alert('Digite um nome válido e não repetido!');
   }
 }
 
 function sortear() {
-  if (amigos.length % 2 == 0) {
+  if (amigos.length % 2 == 0 && amigos.length >= 4) {
     amigos = embaralhar(amigos);
     let resultado = document.getElementById('lista-sorteio');
     resultado.textContent = '';
@@ -23,7 +23,7 @@ function sortear() {
       } <br>`;
     }
   } else {
-    alert('É preciso um número par de amigos!');
+    alert('É preciso um número par de amigos e maior ou igual a 4!');
   }
 }
 
