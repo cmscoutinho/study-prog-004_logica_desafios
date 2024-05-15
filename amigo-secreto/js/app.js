@@ -17,8 +17,10 @@ function sortear() {
     let resultado = document.getElementById('lista-sorteio');
     resultado.textContent = '';
 
-    for (let i = 0; i < amigos.length; i += 2) {
-      resultado.textContent += `${amigos[i]} -> ${amigos[i + 1]}\n\n`;
+    for (let i = 0; i < amigos.length; i++) {
+      resultado.innerHTML += `${amigos[i]} -> ${
+        amigos[(i + 1) % amigos.length]
+      } <br>`;
     }
   } else {
     alert('É preciso um número par de amigos!');
