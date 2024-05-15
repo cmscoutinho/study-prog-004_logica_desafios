@@ -4,11 +4,30 @@ function adicionar() {
   let nome = document.getElementById('nome-amigo');
   if (nome.value != '' && !amigos.includes(nome.value)) {
     amigos.push(nome.value);
-    document.getElementById('lista-amigos').textContent = amigos;
+    atualizaLista();
     nome.value = '';
   } else {
     alert('Digite um nome válido e não repetido!');
   }
+}
+
+function atualizaLista() {
+  let listaAmigos = document.getElementById('lista-amigos');
+  listaAmigos.innerHTML = '';
+  for (let i = 0; i < amigos.length; i++) {
+    listaAmigos.innerHTML += `<span onclick=excluirAmigo("${i}")>${amigos[i]}</span>`;
+    if (i < amigos.length - 1) listaAmigos.innerHTML += ',';
+  }
+}
+
+function atualizarSorteio() {
+  document.getElementById('lista-sorteio').innerHTML = '';
+}
+
+function excluirAmigo(idx) {
+  amigos.splice(idx, 1);
+  atualizaLista();
+  atualizarSorteio();
 }
 
 function sortear() {
@@ -29,9 +48,8 @@ function sortear() {
 
 function reiniciar() {
   amigos = [];
-  document.getElementById('nome-amigo').value = '';
   document.getElementById('lista-amigos').textContent = '';
-  document.getElementById('lista-sorteio').textContent = '';
+  atualizarSorteio();
 }
 
 function embaralhar(amigos) {
